@@ -35,7 +35,7 @@ Claude Desktop (`claude_desktop_config.json`):
 { "mcpServers": { "my-server": { "command": "/path/to/.venv/bin/mcp-template", "args": ["stdio"] } } }
 ```
 
-Remote clients connect to `https://your-host/mcp` with `Authorization: Bearer <token>`. Set the public hostname so the SDK's DNS-rebinding protection accepts it: `--allowed-host mcp.example.com` (repeatable) or `MCP_ALLOWED_HOSTS=mcp.example.com,mcp.example.com:443`. Unknown `Host` headers get `421`.
+Remote clients connect to `https://your-host/mcp` with `Authorization: Bearer <token>`. Set the public hostname so the SDK's DNS-rebinding protection accepts it: `--allowed-host mcp.example.com` (repeatable) or `MCP_ALLOWED_HOSTS=mcp.example.com,mcp.example.com:443`. Unknown `Host` headers are rejected (`421` from the SDK middleware; some servers surface it as `400`).
 
 ## Adapting it to your product
 
