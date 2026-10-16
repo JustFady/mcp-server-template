@@ -1,0 +1,30 @@
+[project]
+name = "mcp-server-template"
+version = "0.1.0"
+description = "Production-shaped MCP server starter: bearer auth, per-client rate limits, structured call logging, tests, Docker, CI."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Fady Youssef" }]
+requires-python = ">=3.11"
+dependencies = ["mcp>=2.3", "starlette>=0.40", "uvicorn>=0.30"]
+keywords = ["mcp", "model-context-protocol", "template", "starlette", "claude", "agents"]
+
+[project.urls]
+Repository = "https://github.com/JustFady/mcp-server-template"
+
+[project.scripts]
+mcp-template = "mcp_template.__main__:main"
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "httpx"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_template"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
